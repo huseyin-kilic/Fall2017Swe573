@@ -7,6 +7,12 @@ Content will be updated soon.
 
 [![Build Status](https://travis-ci.org/huseyin-kilic/Fall2017Swe573.svg?branch=master)](https://travis-ci.org/huseyin-kilic/Fall2017Swe573)
 
+**Time Tracking**
+
+* Estimated time for an issue will be specified within the corresponding issue description. 
+* For tracking the actual time spent on issues, free version of [toggl](https://toggl.com) will be used.
+* Once an issue is completed, actual time spent on the task will be retrieved from [toggl](https://toggl.com) and noted on the issue with a comment.
+
 **Issue Management**
 
 [Issue Repository](https://github.com/huseyin-kilic/Fall2017Swe573/issues) is used for tracking and monitoring research and development tasks, new features, enhancements and bug fixes. Labels have been created for classifying and filtering issues:
