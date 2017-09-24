@@ -1,5 +1,5 @@
 # Fall2017Swe573
-Bogazici University SWE-573 course project repository.
+Bogazici University SWE-573 Course project repository.
 
 Project github page can be accessed [here](https://huseyin-kilic.github.io/Fall2017Swe573/).
 
