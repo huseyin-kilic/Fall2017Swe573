@@ -5,11 +5,11 @@ Project github page can be accessed [here](https://huseyin-kilic.github.io/Fall2
 
 Content will be updated soon.
 
-
+[![Build Status](https://travis-ci.org/huseyin-kilic/Fall2017Swe573.svg?branch=master)](https://travis-ci.org/huseyin-kilic/Fall2017Swe573)
 
 **Issue Management**
 
-[Issue Repository](https://github.com/Mephala/Fall2016Swe573_healthTracker/issues) is used for tracking and monitoring research and development tasks, new features, enhancements and bug fixes. Labels have been created for classifying and filtering issues:
+[Issue Repository](https://github.com/huseyin-kilic/Fall2017Swe573/issues) is used for tracking and monitoring research and development tasks, new features, enhancements and bug fixes. Labels have been created for classifying and filtering issues:
 * research: investigation on both functional area (domain knowledge, user stories, public APIs) and technical area (languages, frameworks and tools to be used)  
 * documentation: creation of requirement analysis document, project planning document, design diagrams and UI mock-ups
 * requirement: elitication and documentation and validation of user needs
