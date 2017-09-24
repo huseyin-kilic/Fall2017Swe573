@@ -1,2 +1,4 @@
 # Fall2017Swe573
-Repository for the project for SWE-573 course on Fall 2017.
+SWE573 Software Development Practice course project repository.
+
+Content will be updated soon.
