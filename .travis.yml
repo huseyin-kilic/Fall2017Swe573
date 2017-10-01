@@ -1,7 +1,12 @@
 language: java
 jdk:
   - oraclejdk7
+services:
+  - postgresql
+before_script:
+  - psql -c 'create database postgres;' -U postgres
 script: 
 - echo "Build started"
+- mvn clean install
 after_script:
 - echo "Build completed"
