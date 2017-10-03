@@ -7,7 +7,7 @@ services:
 cache:
   directories:
   - "$HOME/google-cloud-sdk/"
-env:
+before_install:
 # If the SDK is not already cached, download it and unpack it
 - gcloud version || true
 - if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf $HOME/google-cloud-sdk; export CLOUDSDK_CORE_DISABLE_PROMPTS=1; curl https://sdk.cloud.google.com | bash; fi
