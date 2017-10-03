@@ -13,12 +13,11 @@ install:
 - mvn clean install
 #script:
 #e2e test scripts goes here
-before_deploy:
-- mvn appengine:update
 deploy:
   provider: gae
   keyfile: client-secret.json
   project: high-ace-181518
+- mvn appengine:deploy
 #  config: src/main/appengine/app.yaml
 after_script:
 - echo "Build completed"
