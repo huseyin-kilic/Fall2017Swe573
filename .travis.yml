@@ -3,13 +3,34 @@ jdk:
 - openjdk7
 services:
 - postgresql
+# Cache our Gcloud SDK between commands
+cache:
+  directories:
+  - "$HOME/google-cloud-sdk/"
+env:
+# Make sure gcloud command is on our PATH and the App Engine SDK is in the path
+- GAE_PATH=${HOME}/.cache/google_appengine PATH=$PATH:${HOME}/google-cloud-sdk/bin CLOUDSDK_CORE_DISABLE_PROMPTS=1
+# [START auth]
+# Decrypt the credentials using the key added with the Travis command line tool
+- openssl aes-256-cbc -K $encrypted_d93e3b822ed8_key -iv $encrypted_d93e3b822ed8_iv -in credentials.tar.gz.enc -out credentials.tar.gz -d
+# If the SDK is not already cached, download it and unpack it
+- if [ ! -d ${HOME}/google-cloud-sdk ]; then
+     curl https://sdk.cloud.google.com | bash;
+  fi
+- tar -xzf credentials.tar.gz
+- mkdir -p lib
+# Use the decrypted service account credentials to authenticate the command line tool
+- gcloud auth activate-service-account --key-file client-secret.json
+# [END auth]
 install:
 - gcloud config set project swe573
 script:
 - echo "Build started"
 - mvn clean install
+# Deploy the app
+- gcloud -q preview app deploy app.yaml --promote
+# Run and end to end test
+# e2e tests goes here
+# [END deploy]
 after_script:
 - echo "Build completed"
-dd:
-- openssl aes-256-cbc -K $encrypted_d93e3b822ed8_key -iv $encrypted_d93e3b822ed8_iv
-  -in credentials.tar.gz.enc -out credentials.tar.gz -d
