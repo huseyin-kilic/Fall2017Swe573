@@ -5,7 +5,7 @@
 
 	<groupId>com.hkilic</groupId>
 	<artifactId>swe573</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2</version>
 	<packaging>jar</packaging>
 
 	<name>swe573</name>
