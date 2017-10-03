@@ -13,6 +13,8 @@ install:
 - mvn clean install
 #script:
 #e2e test scripts goes here
+before_deploy:
+- mvn appengine:update
 deploy:
   provider: gae
   keyfile: client-secret.json
