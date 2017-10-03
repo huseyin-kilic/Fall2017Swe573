@@ -17,5 +17,6 @@ deploy:
   provider: gae
   keyfile: client-secret.json
   project: swe573
+  config: src/main/appengine/app.yaml
 after_script:
 - echo "Build completed"
