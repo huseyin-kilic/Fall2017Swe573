@@ -17,6 +17,7 @@ before_install:
 - source /home/travis/google-cloud-sdk/path.bash.inc
 install:
 - gcloud auth activate-service-account --key-file client-secret.json
+- gcloud config set project swe573
 - gcloud compute ssh --zone ZONE INSTANCE --command 'cd /src/high-ace-181518/Fall2017Swe573 && git pull && mvn appengine:deploy'.
 script:
 - echo "Build started"
