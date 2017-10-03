@@ -22,6 +22,6 @@ install:
 script:
 - echo "Build started"
 - mvn clean install
-- gcloud components install preview app
+- gcloud components update
 after_script:
 - echo "Build completed"
