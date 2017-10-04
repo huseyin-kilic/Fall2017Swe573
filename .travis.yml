@@ -17,6 +17,6 @@ deploy:
   provider: gae
   keyfile: client-secret.json
   project: high-ace-181518
-  config: src/main/appengine/app.yaml
+# config: src/main/appengine/app.yaml
 after_script:
 - echo "Build completed"
