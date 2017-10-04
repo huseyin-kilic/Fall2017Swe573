@@ -11,13 +11,16 @@ before_install:
 install:
 - echo "Build started"
 - mvn clean install
+
 #script:
 #e2e test scripts goes here
-deploy:
-  provider: gae
-  keyfile: client-secret.json
-  project: high-ace-181518
-  skip_cleanup: true
-  config: src/main/appengine/app.yaml
+
+#deploy:
+#  provider: gae
+#  keyfile: client-secret.json
+#  project: high-ace-181518
+#  skip_cleanup: true
+#  config: src/main/appengine/app.yaml
+
 after_script:
 - echo "Build completed"
