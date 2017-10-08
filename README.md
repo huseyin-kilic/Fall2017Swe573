@@ -1,9 +1,8 @@
-# Fall2017Swe573
-Bogazici University SWE-573 Course project repository.
+# TTEvent
 
-Project github page can be accessed [here](https://huseyin-kilic.github.io/Fall2017Swe573/).
+This project aims to create a notification system for the upcoming events based on selected categories and locations. 
 
-Content will be updated soon.
+More details are available at [github pages](https://huseyin-kilic.github.io/Fall2017Swe573/).
 
 [![Build Status](https://travis-ci.org/huseyin-kilic/Fall2017Swe573.svg?branch=master)](https://travis-ci.org/huseyin-kilic/Fall2017Swe573)
 
