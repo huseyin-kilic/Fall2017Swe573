@@ -24,7 +24,7 @@ Document consists of two parts, first part covers functional user requirements a
 
 * 9\. **Profile overview**: Users should be able to their profile and update preferences.
 
-* 10\. **Notification deactivation/activation**: Users should be able to deactivate/activate notifications from the application.attempts, account is locked and a notification email is sent to the user.     
+* 10\. **Notification deactivation/activation**: Users should be able to deactivate/activate notifications from the application.   
      
 ## **System Constraints**
 * 1\. **Input format constraints**
