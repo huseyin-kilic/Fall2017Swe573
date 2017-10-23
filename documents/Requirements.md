@@ -22,7 +22,7 @@ Document consists of two parts, first part covers functional user requirements a
 
 * 8\. **Share on Twitter**: When they decide to attend to an event, users can share this on Twitter using a single share button. When the button is clicked, a tweet is created including a link to the corresponding event.
 
-* 9\. **Profile overview**: Users should be able to their profile and update preferences.
+* 9\. **Profile overview**: Users should be able to view their profile and update preferences.
 
 * 10\. **Notification deactivation/activation**: Users should be able to deactivate/activate notifications from the application.   
      
