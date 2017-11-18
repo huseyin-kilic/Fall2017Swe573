@@ -13,14 +13,17 @@ import javax.persistence.SequenceGenerator;
 /**
  * @author huseyin.kilic
  */
-@Entity(name = "dummy")
+@Entity(name = "user")
 @Data
-public class DummyEntity {
+public class UserEntity {
 
   @Id
-  @GeneratedValue(generator = "dummy_s")
-  @SequenceGenerator(name ="dummy_s", sequenceName = "dummy_s", allocationSize = 25)
+  @GeneratedValue(generator = "user_s")
+  @SequenceGenerator(name ="user_s", sequenceName = "user_s", allocationSize = 25)
   private Long id;
+
+  private final long twitterId;
+
   private String detail;
 
 }
