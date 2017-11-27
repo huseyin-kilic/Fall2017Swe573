@@ -4,9 +4,7 @@ This document contains the list of requirements for the event tracking and notif
 Document consists of two parts, first part covers functional user requirements and second part specifies the system constraints.
 
 ## **User Requirements**
-* 1\. **Registration**: There are two options for registering to the system:
-    * 1.1\. Using email address: User must provide a valid email address, a username and a password. 
-    * 1.2\. Using Twitter account: Users can register via their existing Twitter accounts. Username is set as the twitter username.  
+* 1\. **Registration**: Users can register via their existing Twitter accounts. Username is set as the twitter username.  
 
 * 2\. **Selection of preferred event categories**: Users should be able to view the pre-defined set of event categories and choose the list of categories that they are interested in.
 
@@ -18,7 +16,7 @@ Document consists of two parts, first part covers functional user requirements a
 
 * 7\. **Notification channel selection**: There are two options for receiving notifications from the system. 
     * 6.1\.Email notification: System creates and sends an email to the user about the upcoming events.
-    * 6.2\.Direct message notification via Twitter: Direct message notification option is enabled only if the user has registered via his/her Twitter account and can be used only by the users with public Twitter profiles. 
+    * 6.2\.Direct message notification via Twitter: Direct message notification option is enabled only if the user has a public Twitter profile. 
 
 * 8\. **Share on Twitter**: When they decide to attend to an event, users can share this on Twitter using a single share button. When the button is clicked, a tweet is created including a link to the corresponding event.
 
