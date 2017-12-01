@@ -3,8 +3,10 @@
  */
 package com.ttevent.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -15,6 +17,8 @@ import javax.persistence.Id;
 @Entity(name = "location")
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class LocationEntity extends AbstractEntity {
 
   @Id

@@ -74,7 +74,6 @@
 <main role="main" class="probootstrap-main js-probootstrap-main">
 
 
-
     <form action="/profile" method="post">
         <fieldset class="form-group">
 
@@ -84,26 +83,24 @@
             </div>
 
             <div class="form-group">
-                <label for="categories" style="margin-top: 10px">Categories:</label>
-                <select multiple class="form-control float-left" style="height: 100%" id="categories" name="categories">
-                    <option>Concert</option>
-                    <option>Festival</option>
-                    <option>Outdoor</option>
-                    <option>Art</option>
-                    <option>Science</option>
-                    <option>Fashion</option>
+                <label for="categories" style="margin-top: 10px">Categories:
+                    <span style="color: #0056b3" th:text="${preferredCategories}"></span></label>
+                <select multiple class="form-control" style="height: 100%" id="categories" th:name="categories">
+                    <option th:each="category : ${categories}"
+                            th:value="${category.id}"
+                            th:text="${category.adi}">
+                    </option>
                 </select>
             </div>
 
-            <div class="form-group" >
-                <label for="locations" style="margin-top: 25px">Locations:</label>
-                <select multiple class="form-control" style="height: 100%" id="locations" name="locations">
-                    <option>İstanbul</option>
-                    <option>Ankara</option>
-                    <option>İzmir</option>
-                    <option>Eskişehir</option>
-                    <option>Antalya</option>
-                    <option>Bursa</option>
+            <div class="form-group">
+                <label for="locations" style="margin-top: 25px">Locations:
+                    <span style="color: #0056b3" th:text="${preferredLocations}"></span></label>
+                <select multiple class="form-control" style="height: 100%" id="locations" th:name="locations">
+                    <option th:each="location : ${locations}"
+                            th:value="${location.id}"
+                            th:text="${location.adi}">
+                    </option>
                 </select>
             </div>
 

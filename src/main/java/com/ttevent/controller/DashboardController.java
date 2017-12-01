@@ -3,6 +3,7 @@
  */
 package com.ttevent.controller;
 
+import io.swagger.client.ApiException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class DashboardController extends BaseController {
 
   @RequestMapping
-  public String dashboardView(Model model) {
+  public String dashboardView(Model model) throws ApiException {
     fillProfile(model);
     return "dashboard";
   }

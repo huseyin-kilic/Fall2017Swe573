@@ -22,4 +22,6 @@ public class UserProfile {
   private String profileImageUrl;
   private List<Location> preferredLocations;
   private List<Category> preferredCategories;
+
+
 }

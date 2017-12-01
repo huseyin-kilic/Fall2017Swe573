@@ -19,7 +19,7 @@ public class BaseDao<T extends AbstractEntity> {
   protected EntityManager em;
 
   public void persist(T entity) {
-    em.persist(entity);
+    em.merge(entity);
   }
 
 }
