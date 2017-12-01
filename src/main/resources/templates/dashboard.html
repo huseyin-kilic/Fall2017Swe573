@@ -57,10 +57,14 @@
         </div>
       </nav>
       <footer class="probootstrap-aside-footer probootstrap-animate" data-animate-effect="fadeInLeft">
-        <ul class="list-unstyled d-flex probootstrap-aside-social">
-          <li><a href="http://twitter.com" class="p-2"><span class="icon-twitter"></span></a></li>
-        </ul>
         <p>&copy; 2017 TTEvent</a>. <br/> All Rights Reserved</p>
+
+        <form action="/connect/twitter" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <button type="submit" class="btn btn-sm btn-danger">
+            <i class="fa fa-sign-out"></i> Logout
+          </button>
+        </form>
       </footer>
     </div>
   </aside>

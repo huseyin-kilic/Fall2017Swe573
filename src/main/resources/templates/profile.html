@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="css/icomoon.css"/>
     <link rel="stylesheet" href="css/animate.css"/>
     <link rel="stylesheet" href="css/style.css"/>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -56,16 +56,24 @@
                 </ul>
             </div>
         </nav>
+
         <footer class="probootstrap-aside-footer probootstrap-animate" data-animate-effect="fadeInLeft">
-            <ul class="list-unstyled d-flex probootstrap-aside-social">
-                <li><a href="http://twitter.com" class="p-2"><span class="icon-twitter"></span></a></li>
-            </ul>
             <p>&copy; 2017 TTEvent</a>. <br/> All Rights Reserved</p>
+
+            <form action="/connect/twitter" method="post">
+                <input type="hidden" name="_method" value="delete">
+                <button type="submit" class="btn btn-sm btn-danger">
+                    <i class="fa fa-sign-out"></i> Logout
+                </button>
+            </form>
         </footer>
     </div>
+
 </aside>
 
 <main role="main" class="probootstrap-main js-probootstrap-main">
+
+
 
     <form action="/profile" method="post">
         <fieldset class="form-group">

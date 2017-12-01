@@ -1,7 +1,7 @@
 /*
  * © 2016 Copyright Amadeus Unauthorised use and disclosure strictly forbidden.
  */
-package com.hkilic.controller;
+package com.ttevent.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

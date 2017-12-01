@@ -1,16 +1,20 @@
 /*
  * © 2016 Copyright Amadeus Unauthorised use and disclosure strictly forbidden.
  */
-package com.hkilic.controller;
+package com.ttevent.controller;
 
-import org.springframework.social.connect.ConnectionFactoryLocator;
+import com.ttevent.service.EventService;
+import io.swagger.client.ApiException;
+import io.swagger.client.model.Sehir;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.connect.ConnectionRepository;
-import org.springframework.social.connect.web.ConnectController;
 import org.springframework.social.twitter.api.Twitter;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.inject.Inject;
+import java.util.List;
+
 /**
  * @author huseyin.kilic
  */
@@ -18,7 +22,7 @@ import javax.inject.Inject;
 @RequestMapping("/")
 public class LoginController {
 
-  @Inject
+  @Autowired
   private ConnectionRepository connectionRepository;
 
   @RequestMapping
@@ -28,11 +32,11 @@ public class LoginController {
 
   @RequestMapping("/login")
   public String loginView() {
-    if (connectionRepository.findPrimaryConnection(Twitter.class) == null) {
+    if (CollectionUtils.isEmpty(connectionRepository.findConnections(Twitter.class))
+            || connectionRepository.findPrimaryConnection(Twitter.class) == null) {
       return "login";
     }
     return "redirect:/profile";
   }
-
 
 }
