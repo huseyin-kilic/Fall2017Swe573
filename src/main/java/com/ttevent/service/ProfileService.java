@@ -3,13 +3,14 @@
  */
 package com.ttevent.service;
 
+import com.google.appengine.repackaged.com.google.api.client.util.Lists;
+import com.google.common.base.Splitter;
 import com.ttevent.dao.ProfileDao;
 import com.ttevent.domain.Category;
 import com.ttevent.domain.Location;
 import com.ttevent.domain.UserProfile;
 import com.ttevent.entity.UserEntity;
 import com.ttevent.mapper.ProfileMapper;
-import io.swagger.client.model.Kategori;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.twitter.api.Twitter;
 import org.springframework.social.twitter.api.TwitterProfile;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.MultiValueMap;
+import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +41,9 @@ public class ProfileService {
 
   @Autowired
   private EventService eventService;
+
+  @Autowired
+  private ValidationService validationService;
 
   public UserProfile getUserProfile() {
     UserEntity userEntity = dao.findByTwitterId(twitter.userOperations().getProfileId());
@@ -63,11 +68,36 @@ public class ProfileService {
 
   @Transactional
   public void saveProfile(MultiValueMap<String, Object> formData) {
-    UserProfile userProfile = getUserProfile();
-    userProfile.setPreferredLocations(createLocationList(formData.get("locations")));
-    userProfile.setPreferredCategories(createCategoryList(formData.get("categories")));
-    UserEntity entity = mapper.convert(userProfile);
-    dao.persist(entity);
+    List<Exception> formErrors = validationService.validateFormData(formData);
+
+    if (CollectionUtils.isEmpty(formErrors)) {
+      UserProfile userProfile = getUserProfile();
+      userProfile.setPreferredLocations(createLocationList(formData.get("locations")));
+      userProfile.setPreferredCategories(createCategoryList(formData.get("categories")));
+      userProfile.setSearchKeywords(createSearchKeywords(formData.get("searchKeywords")));
+      userProfile.setNotificationChannel(
+              formData.get("notificationChannel").toString().replace("]", "").replace("[", ""));
+      userProfile.setReceiveNotifications(formData.containsKey("receiveNotifications"));
+      UserEntity entity = mapper.convert(userProfile);
+      dao.persist(entity);
+    }
+
+  }
+
+  private List<String> createSearchKeywords(Object searchKeywords) {
+    if (StringUtils.isEmpty(searchKeywords)) {
+      return null;
+    }
+    List<String> tempList =
+            Lists.newArrayList(Splitter.on(',').split(searchKeywords.toString().replace("[", "").replace("]", "")));
+
+    List<String> searchKeywordList = new ArrayList<>();
+    for (String searchKeyword : tempList) {
+      if (!searchKeyword.trim().isEmpty()) {
+        searchKeywordList.add(searchKeyword);
+      }
+    }
+    return searchKeywordList;
   }
 
   private List<Category> createCategoryList(List<Object> categories) {
@@ -112,5 +142,16 @@ public class ProfileService {
       base.append(category.getAdi()).append(", ");
     }
     return base.toString().substring(0, base.toString().length() - 2);
+  }
+
+  public String getSearchKeywordsInString(List<String> searchKeywords) {
+    if (CollectionUtils.isEmpty(searchKeywords)) {
+      return "";
+    }
+    StringBuilder base = new StringBuilder();
+    for (String searchKeyword : searchKeywords) {
+        base.append(searchKeyword + ",");
+    }
+    return base.toString().substring(0, base.toString().length() - 1);
   }
 }

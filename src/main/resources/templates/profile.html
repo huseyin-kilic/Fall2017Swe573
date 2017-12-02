@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="css/animate.css"/>
     <link rel="stylesheet" href="css/style.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 
 <body>
@@ -79,12 +80,15 @@
 
             <div class="form-group">
                 <label for="searchKeywords">Search Keywords:</label>
-                <textarea class="form-control" id="searchKeywords" name="searchKeywords" rows="2"></textarea>
+                <input class="form-control" id="searchKeywords" name="searchKeywords"
+                          th:value="${searchKeywords}" rows="2"></input>
             </div>
 
             <div class="form-group">
                 <label for="categories" style="margin-top: 10px">Categories:
-                    <span style="color: #0056b3" th:text="${preferredCategories}"></span></label>
+                    <span style="color: #0056b3" th:text="${preferredCategories}"></span>
+                    <p style="color: red; font-size: small" th:text="${categoryValidationErrors}"></p>
+                </label>
                 <select multiple class="form-control" style="height: 100%" id="categories" th:name="categories">
                     <option th:each="category : ${categories}"
                             th:value="${category.id}"
@@ -95,7 +99,9 @@
 
             <div class="form-group">
                 <label for="locations" style="margin-top: 25px">Locations:
-                    <span style="color: #0056b3" th:text="${preferredLocations}"></span></label>
+                    <span style="color: #0056b3" th:text="${preferredLocations}"></span>
+                    <p style="color: red; font-size: small" th:text="${locationValidationErrors}"></p>
+                </label>
                 <select multiple class="form-control" style="height: 100%" id="locations" th:name="locations">
                     <option th:each="location : ${locations}"
                             th:value="${location.id}"
@@ -105,19 +111,20 @@
             </div>
 
             <div class="form-group">
-                <label for="notificationOptionEmail" style="margin-top: 25px">Notification Channel:</label>
+                <label for="notificationChannelEmail" style="margin-top: 25px">Notification Channel:</label>
                 <div class="form-check">
                     <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="notificationOption"
-                               id="notificationOptionEmail"
-                               value="email" checked>
+                        <input type="radio" class="form-check-input" name="notificationChannel"
+                               id="notificationChannelEmail"
+                               value="email" th:checked="${notificationChannel}==email">
                         Email
                     </label>
                 </div>
                 <div class="form-check">
                     <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="notificationOption" id="notificationOptionDM"
-                               value="DM">
+                        <input type="radio" class="form-check-input" name="notificationChannel"
+                               id="notificationChannelDM"
+                               value="dm" th:checked="${notificationChannel}==dm">
                         Direct Message
                     </label>
                 </div>
@@ -125,7 +132,8 @@
 
             <div class="form-check">
                 <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input" name="receiveNotifications" checked>
+                    <input type="checkbox" class="form-check-input" name="receiveNotifications"
+                           th:checked="${receiveNotifications}==true">
                     Receive Notifications
                 </label>
             </div>

@@ -26,6 +26,9 @@ public class ProfileMapper {
             .twitterId(entity.getTwitterId())
             .preferredCategories(categoryMapper.convertToDtoList(entity.getPreferredCategories()))
             .preferredLocations(locationMapper.convertToDtoList(entity.getPreferredLocations()))
+            .searchKeywords(entity.getSearchKeywords())
+            .notificationChannel(entity.getNotificationChannel())
+            .receiveNotifications(entity.isReceiveNotifications())
             .build();
   }
 
@@ -35,6 +38,9 @@ public class ProfileMapper {
             .twitterId(dto.getTwitterId())
             .preferredCategories(categoryMapper.convertToEntityList(dto.getPreferredCategories()))
             .preferredLocations(locationMapper.convertToEntityList(dto.getPreferredLocations()))
+            .searchKeywords(dto.getSearchKeywords())
+            .notificationChannel(dto.getNotificationChannel())
+            .receiveNotifications(dto.isReceiveNotifications())
             .build();
   }
 

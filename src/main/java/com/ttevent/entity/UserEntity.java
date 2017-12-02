@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -39,5 +40,12 @@ public class UserEntity extends AbstractEntity {
 
   @ManyToMany
   private List<CategoryEntity> preferredCategories;
+
+  @ElementCollection(targetClass = String.class)
+  private List<String> searchKeywords;
+
+  private String notificationChannel;
+
+  private boolean receiveNotifications;
 
 }
