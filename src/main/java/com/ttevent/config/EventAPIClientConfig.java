@@ -4,6 +4,7 @@
 package com.ttevent.config;
 
 import io.swagger.client.ApiClient;
+import io.swagger.client.api.EtkinlikServisiApi;
 import io.swagger.client.api.KategoriServisiApi;
 import io.swagger.client.api.SehirServisiApi;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,4 +42,10 @@ public class EventAPIClientConfig {
     return kategoriServisiApi;
   }
 
+  @Bean
+  public EtkinlikServisiApi getEventAPI() {
+    EtkinlikServisiApi etkinlikServisiApi = new EtkinlikServisiApi();
+    etkinlikServisiApi.setApiClient(apiClient);
+    return etkinlikServisiApi;
+  }
 }

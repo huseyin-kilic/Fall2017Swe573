@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <title>TTEvent</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    
+
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
 
@@ -16,183 +16,85 @@
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/style.css">
 
-  </head>
-  <body>
+</head>
+<body>
 
-  <aside class="probootstrap-aside js-probootstrap-aside">
+<aside class="probootstrap-aside js-probootstrap-aside">
     <a href="#" class="probootstrap-close-menu js-probootstrap-close-menu d-md-none"><span
             class="oi oi-arrow-left"></span> Close</a>
     <div class="probootstrap-site-logo probootstrap-animate" data-animate-effect="fadeInLeft">
 
-      <a href="/profile" class="mb-2 d-block probootstrap-logo">TTEvent</a>
+        <a href="/profile" class="mb-2 d-block probootstrap-logo">TTEvent</a>
     </div>
     <div class="probootstrap-overflow">
 
-      <nav class="probootstrap-nav">
-        <header class="probootstrap-aside-header probootstrap-animate" data-animate-effect="fadeInLeft">
-          <div id="profileDiv">
-            <div>
-              <img class="img-rounded img-responsive" style="height: 75px; width: 75px"
-                   th:src="${profileImageUrl}"
-                   data-animate-effect="fadeIn">
+        <nav class="probootstrap-nav">
+            <header class="probootstrap-aside-header probootstrap-animate" data-animate-effect="fadeInLeft">
+                <div id="profileDiv">
+                    <div>
+                        <img class="img-rounded img-responsive" style="height: 75px; width: 75px"
+                             th:src="${profileImageUrl}"
+                             data-animate-effect="fadeIn">
+                    </div>
+                    <br/>
+                    <div>
+                        <p th:text="'Hello, ' + ${twitterProfile.screenName} + '!'"/>
+                    </div>
+                </div>
+            </header>
+            <div style="position: absolute; bottom: 350px;">
+                <ul>
+                    <li class="probootstrap-animate" data-animate-effect="fadeInLeft"><a
+                            href="/profile">Profile</a>
+                    </li>
+                    <li class="probootstrap-animate active" data-animate-effect="fadeInLeft"><a href="/dashboard">Event
+                        Dashboard</a>
+                    </li>
+                    </li>
+                    <li class="probootstrap-animate" data-animate-effect="fadeInLeft"><a href="/contact">Contact</a>
+                    </li>
+                </ul>
             </div>
-            <br/>
-            <div>
-              <p th:text="'Hello, ' + ${twitterProfile.screenName} + '!'"/>
-            </div>
-          </div>
-        </header>
-        <div style="position: absolute; bottom: 350px;">
-          <ul>
-            <li class="probootstrap-animate" data-animate-effect="fadeInLeft"><a
-                    href="/profile">Profile</a>
-            </li>
-            <li class="probootstrap-animate active" data-animate-effect="fadeInLeft"><a href="/dashboard">Event
-              Dashboard</a>
-            </li>
-            </li>
-            <li class="probootstrap-animate" data-animate-effect="fadeInLeft"><a href="/contact">Contact</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-      <footer class="probootstrap-aside-footer probootstrap-animate" data-animate-effect="fadeInLeft">
-        <p>&copy; 2017 TTEvent</a>. <br/> All Rights Reserved</p>
+        </nav>
+        <footer class="probootstrap-aside-footer probootstrap-animate" data-animate-effect="fadeInLeft">
+            <p>&copy; 2017 TTEvent</a>. <br/> All Rights Reserved</p>
 
-        <form action="/connect/twitter" method="post">
-          <input type="hidden" name="_method" value="delete">
-          <button type="submit" class="btn btn-sm btn-danger">
-            <i class="fa fa-sign-out"></i> Logout
-          </button>
-        </form>
-      </footer>
+            <form action="/connect/twitter" method="post">
+                <input type="hidden" name="_method" value="delete">
+                <button type="submit" class="btn btn-sm btn-danger">
+                    <i class="fa fa-sign-out"></i> Logout
+                </button>
+            </form>
+        </footer>
     </div>
-  </aside>
+</aside>
 
 
-    <main role="main" class="probootstrap-main js-probootstrap-main">
+<main role="main" class="probootstrap-main js-probootstrap-main">
 
-      <div class="card-columns">
-        <div class="card">
-          <a href="single.html">
-          <img class="card-img-top probootstrap-animate" src="https://ifyazilim.nyc3.digitaloceanspaces.com/EtkIO/PublicDepo/EtkinlikAfis/2017/10/immunoloji-otizm-kanser-79366.jpg" alt="Card image cap" data-animate-effect="fadeIn">
-          </a>
+    <div class="card-columns">
+        <div th:each="event : ${events}">
+            <div class="card">
+                <a th:href="${event.url}">
+                    <p class="bg-primary text-warning text-center" th:text="${event.adi}" style="margin-bottom : 0px;"></p>
+                    <img class="card-img-top probootstrap-animate" th:src="${event.afisUrl}" th:alt="xx"
+                         data-animate-effect="fadeIn">
+                </a>
+            </div>
         </div>
-        <div class="card">
-          <a href="single.html">
-            <img class="card-img-top probootstrap-animate" src="https://ifyazilim.nyc3.digitaloceanspaces.com/EtkIO/PublicDepo/EtkinlikAfis/2017/10/mzv-genclik-zirvesi-80678.jpg" alt="Card image cap" data-animate-effect="fadeIn">
-          </a>
-        </div>
-        <div class="card">
-          <a href="single.html">
-            <img class="card-img-top probootstrap-animate" src="images/img_3.jpg" alt="Card image cap" data-animate-effect="fadeIn">
-          </a>
-        </div>
-        <div class="card">
-          <a href="single.html">
-            <img class="card-img-top probootstrap-animate" src="images/img_4.jpg" alt="Card image cap" data-animate-effect="fadeIn">
-          </a>
-        </div>
-        <div class="card">
-          <a href="single.html">
-            <img class="card-img-top probootstrap-animate" src="images/img_5.jpg" alt="Card image cap" data-animate-effect="fadeIn">
-          </a>
-        </div>
-        <div class="card">
-          <a href="single.html">
-            <img class="card-img-top probootstrap-animate" src="images/img_6.jpg" alt="Card image cap" data-animate-effect="fadeIn">
-          </a>
-        </div>
-        <div class="card">
-          <a href="single.html">
-            <img class="card-img-top probootstrap-animate" src="images/img_7.jpg" alt="Card image cap" data-animate-effect="fadeIn">
-          </a>
-        </div>
-        <div class="card">
-          <a href="single.html">
-            <img class="card-img-top probootstrap-animate" src="https://ifyazilim.nyc3.digitaloceanspaces.com/EtkIO/PublicDepo/EtkinlikAfis/2017/10/italyan-mutfagi-i-78830.jpg" alt="Card image cap" data-animate-effect="fadeIn">
-          </a>
-        </div>
-        <div class="card">
-          <a href="single.html">
-            <img class="card-img-top probootstrap-animate" src="https://ifyazilim.nyc3.digitaloceanspaces.com/EtkIO/PublicDepo/EtkinlikAfis/2017/10/g-rock-in-english-80774.jpg" alt="Card image cap" data-animate-effect="fadeIn">
-          </a>
-        </div>
-        <div class="card">
-          <a href="single.html">
-            <img class="card-img-top probootstrap-animate" src="https://ifyazilim.nyc3.digitaloceanspaces.com/EtkIO/PublicDepo/EtkinlikAfis/2017/8/access-masters-tour-in-istanbul-73528.jpg" alt="Card image cap" data-animate-effect="fadeIn">
-          </a>
-        </div>
-        <div class="card">
-          <a href="single.html">
-            <img class="card-img-top probootstrap-animate" src="https://ifyazilim.nyc3.digitaloceanspaces.com/EtkIO/PublicDepo/EtkinlikAfis/2017/8/baris-icin-muzik-orkestrasi-neseli-pazarlar-74368.jpg" alt="Card image cap" data-animate-effect="fadeIn">
-          </a>
-        </div>
-        <div class="card">
-          <a href="single.html">
-            <img class="card-img-top probootstrap-animate" src="images/img_12.jpg" alt="Card image cap" data-animate-effect="fadeIn">
-          </a>
-        </div>
-        <div class="card">
-          <a href="single.html">
-            <img class="card-img-top probootstrap-animate" src="images/img_13.jpg" alt="Card image cap" data-animate-effect="fadeIn">
-          </a>
-        </div>
-        <div class="card">
-          <a href="single.html">
-            <img class="card-img-top probootstrap-animate" src="images/img_14.jpg" alt="Card image cap" data-animate-effect="fadeIn">
-          </a>
-        </div>
-        <div class="card">
-          <a href="single.html">
-            <img class="card-img-top probootstrap-animate" src="images/img_15.jpg" alt="Card image cap" data-animate-effect="fadeIn">
-          </a>
-        </div>
-        <div class="card">
-          <a href="single.html">
-            <img class="card-img-top probootstrap-animate" src="https://ifyazilim.nyc3.digitaloceanspaces.com/EtkIO/PublicDepo/EtkinlikAfis/2017/9/mario-levi-75577.png" alt="Card image cap" data-animate-effect="fadeIn">
-          </a>
-        </div>
-        <div class="card">
-          <a href="single.html">
-            <img class="card-img-top probootstrap-animate" src="https://ifyazilim.nyc3.digitaloceanspaces.com/EtkIO/PublicDepo/EtkinlikAfis/2017/11/rafadan-tayfa-turkiye-dir-burasi-cocuk-muzikali-81504.jpg" alt="Card image cap" data-animate-effect="fadeIn">
-          </a>
-        </div>
-        <div class="card">
-          <a href="single.html">
-            <img class="card-img-top probootstrap-animate" src="images/img_18.jpg" alt="Card image cap" data-animate-effect="fadeIn">
-          </a>
-        </div>
-        <div class="card">
-          <a href="single.html">
-            <img class="card-img-top probootstrap-animate" src="images/img_19.jpg" alt="Card image cap" data-animate-effect="fadeIn">
-          </a>
-        </div>
-        <div class="card">
-          <a href="single.html">
-            <img class="card-img-top probootstrap-animate" src="images/img_20.jpg" alt="Card image cap" data-animate-effect="fadeIn">
-          </a>
-        </div>
-        <div class="card">
-          <a href="single.html">
-            <img class="card-img-top probootstrap-animate" src="images/img_21.jpg" alt="Card image cap" data-animate-effect="fadeIn">
-          </a>
-        </div>
-      </div>
+    </div>
+
+</main>
 
 
-    </main>
+<script src="js/jquery-3.2.1.slim.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.waypoints.min.js"></script>
+<script src="js/imagesloaded.pkgd.min.js"></script>
 
-    
+<script src="js/main.js"></script>
 
-    <script src="js/jquery-3.2.1.slim.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.waypoints.min.js"></script>
-    <script src="js/imagesloaded.pkgd.min.js"></script>
-
-    <script src="js/main.js"></script>
-
-  </body>
+</body>
 </html>

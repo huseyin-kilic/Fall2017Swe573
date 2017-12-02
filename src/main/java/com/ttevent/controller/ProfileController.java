@@ -32,7 +32,7 @@ public class ProfileController extends BaseController {
   public String saveProfile(@RequestBody MultiValueMap<String, Object> formData, Model model) throws ApiException {
     profileService.saveProfile(formData);
     fillProfile(model);
-    return "profile";
+    return "redirect:/dashboard";
   }
 
 
