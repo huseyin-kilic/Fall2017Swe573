@@ -5,6 +5,7 @@ package com.ttevent.controller;
 
 import com.ttevent.domain.UserProfile;
 import com.ttevent.exception.InvalidCategoryException;
+import com.ttevent.exception.InvalidEmailException;
 import com.ttevent.exception.InvalidLocationException;
 import com.ttevent.service.EventService;
 import com.ttevent.service.ProfileService;
@@ -12,6 +13,7 @@ import com.ttevent.service.ValidationService;
 import io.swagger.client.ApiException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.connect.ConnectionRepository;
+import org.springframework.social.twitter.api.Twitter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
@@ -35,8 +37,11 @@ public class BaseController {
   @Autowired
   protected ValidationService validationService;
 
+  @Autowired
+  protected Twitter twitter;
+
   public void fillProfile(Model model) throws ApiException {
-    UserProfile user = profileService.getUserProfile();
+    UserProfile user = profileService.getConnectedUserProfile();
 
     model.addAttribute("user", user);
     model.addAttribute("twitterProfile", user.getTwitterProfile());
@@ -55,6 +60,8 @@ public class BaseController {
             InvalidLocationException.class));
     model.addAttribute("categoryValidationErrors", validationService.getValidationErrorsInString(
             InvalidCategoryException.class));
+    model.addAttribute("emailValidationErrors", validationService.getValidationErrorsInString(
+            InvalidEmailException.class));
     validationService.setValidationErrors(new ArrayList<Exception>());
   }
 

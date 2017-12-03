@@ -45,14 +45,8 @@ public class ProfileService {
   @Autowired
   private ValidationService validationService;
 
-  public UserProfile getUserProfile() {
-    UserEntity userEntity = dao.findByTwitterId(twitter.userOperations().getProfileId());
-    UserProfile userProfile;
-    if (userEntity == null) {
-      userProfile = UserProfile.builder().twitterId(twitter.userOperations().getProfileId()).build();
-    } else {
-      userProfile = mapper.convert(userEntity);
-    }
+  public UserProfile getConnectedUserProfile() {
+    UserProfile userProfile = getProfileByTwitterId(twitter.userOperations().getProfileId());
 
     TwitterProfile twitterProfile = twitter.userOperations().getUserProfile();
     String profileImageUrl = twitterProfile.getProfileImageUrl();
@@ -67,11 +61,12 @@ public class ProfileService {
   }
 
   @Transactional
-  public void saveProfile(MultiValueMap<String, Object> formData) {
+  public boolean saveProfile(MultiValueMap<String, Object> formData) {
     List<Exception> formErrors = validationService.validateFormData(formData);
 
     if (CollectionUtils.isEmpty(formErrors)) {
-      UserProfile userProfile = getUserProfile();
+      UserProfile userProfile = getConnectedUserProfile();
+      userProfile.setEmail(formData.get("email").toString().replace("[", "").replace("]", ""));
       userProfile.setPreferredLocations(createLocationList(formData.get("locations")));
       userProfile.setPreferredCategories(createCategoryList(formData.get("categories")));
       userProfile.setSearchKeywords(createSearchKeywords(formData.get("searchKeywords")));
@@ -80,6 +75,9 @@ public class ProfileService {
       userProfile.setReceiveNotifications(formData.containsKey("receiveNotifications"));
       UserEntity entity = mapper.convert(userProfile);
       dao.persist(entity);
+      return true;
+    } else {
+      return false;
     }
 
   }
@@ -153,5 +151,16 @@ public class ProfileService {
         base.append(searchKeyword + ",");
     }
     return base.toString().substring(0, base.toString().length() - 1);
+  }
+
+  public UserProfile getProfileByTwitterId(long twitterProfileId) {
+    UserEntity userEntity = dao.findByTwitterId(twitterProfileId);
+    UserProfile userProfile;
+    if (userEntity == null) {
+      userProfile = UserProfile.builder().twitterId(twitterProfileId).build();
+    } else {
+      userProfile = mapper.convert(userEntity);
+    }
+    return userProfile;
   }
 }

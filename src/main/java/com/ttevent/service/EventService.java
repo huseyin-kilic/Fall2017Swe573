@@ -82,10 +82,10 @@ public class EventService {
     return null;
   }
 
-  public List<Etkinlik> searchEventsForUser() throws ApiException {
+  public List<Etkinlik> searchEventsForUser(long twitterProfileId) throws ApiException {
     List<Etkinlik> events = new ArrayList<>();
     try {
-      UserProfile userProfile = profileService.getUserProfile();
+      UserProfile userProfile = profileService.getProfileByTwitterId(twitterProfileId);
       List<Category> preferredCategories = userProfile.getPreferredCategories();
       List<Location> preferredLocations = userProfile.getPreferredLocations();
       List<String> searchKeywords = userProfile.getSearchKeywords();

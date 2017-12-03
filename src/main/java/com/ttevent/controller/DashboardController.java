@@ -26,7 +26,7 @@ public class DashboardController extends BaseController {
   @RequestMapping
   public String dashboardView(Model model) throws ApiException {
     fillProfile(model);
-    List<Etkinlik> events = eventService.searchEventsForUser();
+    List<Etkinlik> events = eventService.searchEventsForUser(twitter.userOperations().getProfileId());
     model.addAttribute("events", events);
     return "dashboard";
   }
