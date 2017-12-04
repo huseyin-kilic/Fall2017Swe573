@@ -76,7 +76,7 @@
         <div th:each="event : ${events}">
             <div class="card">
                 <a th:href="${event.url}">
-                    <p class="bg-primary text-warning text-center" th:text="${event.adi}" style="margin-bottom : 0px;"></p>
+                    <p class="text-error text-center" th:text="${event.adi}" style="margin-bottom : 0px;"></p>
                     <img class="card-img-top probootstrap-animate" th:src="${event.afisUrl}" th:alt="xx"
                          data-animate-effect="fadeIn">
                 </a>

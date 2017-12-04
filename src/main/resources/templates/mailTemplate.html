@@ -1,16 +1,31 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head></head>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css"/>
+
+    <link rel="stylesheet" href="css/owl.carousel.min.css"/>
+    <link rel="stylesheet" href="css/owl.theme.default.min.css"/>
+
+    <link rel="stylesheet" href="css/icomoon.css"/>
+    <link rel="stylesheet" href="css/animate.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
 <body>
 <h3 style="color:forestgreen;"
     th:text="'Hello ' + ${userProfile.name} + '! We thought you might enjoy these events.'"></h3>
+<br/>
+<br/>
 <table>
     <tr>
-        <td>Etkinlik</td>
-        <td>Mekan</td>
-        <td>Tür</td>
-        <td>Kategori</td>
-        <td>Tarih</td>
+        <td style="color: red">Etkinlik</td>
+        <td style="color: red">Mekan</td>
+        <td style="color: red">Tür</td>
+        <td style="color: red">Kategori</td>
+        <td style="color: red">Tarih</td>
     </tr>
     <tr th:each="event : ${events}">
         <td>
@@ -22,10 +37,15 @@
         <td th:text="${event.baslangic}"></td>
     </tr>
 </table>
-<footer>
-    <p>You have received this email because you are subscribed to TTEvent daily notifications.
+<footer class="probootstrap-aside-footer probootstrap-animate" data-animate-effect="fadeInLeft">
+    <br/>
+    <br/>
+    <hr/>
+    <p>You received this email because you are subscribed to TTEvent daily notifications.
         If you do not want to receive these emails, you can cancel you subscription using
-        <a th:href="xxx">this</a> link.</p>
+        <a href="http://localhost:8080/profile">this</a> link.</p>
+    <img src="https://d.wildapricot.net/images/newsblog/bigstock-events-7444309.jpg" width="10%" height="10%"/>
+    <p>&copy; 2017 TTEvent. All Rights Reserved.</p>
 </footer>
 </body>
 </html>
