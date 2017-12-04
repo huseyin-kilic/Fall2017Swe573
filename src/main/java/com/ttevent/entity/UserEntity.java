@@ -35,6 +35,8 @@ public class UserEntity extends AbstractEntity {
 
   private long twitterId;
 
+  private String name;
+
   private String email;
 
   @ManyToMany

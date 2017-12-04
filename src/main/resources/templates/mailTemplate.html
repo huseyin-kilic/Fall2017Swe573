@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head></head>
+<body>
+<h3 style="color:forestgreen;"
+    th:text="'Hello ' + ${userProfile.name} + '! We thought you might enjoy these events.'"></h3>
+<table>
+    <tr>
+        <td>Etkinlik</td>
+        <td>Mekan</td>
+        <td>Tür</td>
+        <td>Kategori</td>
+        <td>Tarih</td>
+    </tr>
+    <tr th:each="event : ${events}">
+        <td>
+            <a th:href="${event.url}" th:text="${event.adi}"></a>
+        </td>
+        <td th:text="${event.mekan.adi}"></td>
+        <td th:text="${event.tur.adi}"></td>
+        <td th:text="${event.kategori.adi}"></td>
+        <td th:text="${event.baslangic}"></td>
+    </tr>
+</table>
+<footer>
+    <p>You have received this email because you are subscribed to TTEvent daily notifications.
+        If you do not want to receive these emails, you can cancel you subscription using
+        <a th:href="xxx">this</a> link.</p>
+</footer>
+</body>
+</html>

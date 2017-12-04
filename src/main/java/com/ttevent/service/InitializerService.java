@@ -13,6 +13,8 @@ import com.ttevent.mapper.LocationMapper;
 import io.swagger.client.ApiException;
 import io.swagger.client.model.Kategori;
 import io.swagger.client.model.Sehir;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -26,6 +28,8 @@ import java.util.List;
  */
 @Service
 public class InitializerService {
+
+  private static final Logger logger = LoggerFactory.getLogger(InitializerService.class);
 
   @Autowired
   private EventService eventService;
@@ -47,6 +51,7 @@ public class InitializerService {
   }
 
   private void fillLocations() throws ApiException {
+    logger.info("retrieving locations from Events API...");
     List<Sehir> locations = eventService.getLocationsFromAPI();
     List<Location> locationList = new ArrayList<>();
     for (Sehir location : locations) {
@@ -60,9 +65,11 @@ public class InitializerService {
       locationList.add(locationMapper.convert(locationEntity));
     }
     eventService.setLocations(locationList);
+    logger.info("locations retrieved successfully!");
   }
 
   private void fillCategories() throws ApiException {
+    logger.info("retrieving categories from Events API...");
     List<Kategori> categories = eventService.getCategoriesFromAPI();
     List<Category> categoryList = new ArrayList<>();
     for (Kategori kategori : categories) {
@@ -76,6 +83,7 @@ public class InitializerService {
       categoryList.add(categoryMapper.convert(categoryEntity));
     }
     eventService.setCategories(categoryList);
+    logger.info("categories retrieved successfully!");
   }
 
 }

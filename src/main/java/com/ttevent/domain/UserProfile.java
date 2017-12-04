@@ -18,6 +18,7 @@ public class UserProfile {
 
   private Long id;
   private long twitterId;
+  private String name;
   private String email;
   private TwitterProfile twitterProfile;
   private String profileImageUrl;

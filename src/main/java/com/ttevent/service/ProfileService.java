@@ -66,6 +66,7 @@ public class ProfileService {
 
     if (CollectionUtils.isEmpty(formErrors)) {
       UserProfile userProfile = getConnectedUserProfile();
+      userProfile.setName(twitter.userOperations().getUserProfile().getName());
       userProfile.setEmail(formData.get("email").toString().replace("[", "").replace("]", ""));
       userProfile.setPreferredLocations(createLocationList(formData.get("locations")));
       userProfile.setPreferredCategories(createCategoryList(formData.get("categories")));
