@@ -26,6 +26,32 @@ More details are available at [github pages](https://huseyin-kilic.github.io/Fal
 * help-wanted: tasks for which consultancy of a stakeholder is needed
 
 
+**Local Installation Guide**
+* Clone or download project to an appropriate directory in your computer.
+
+`git clone https://github.com/huseyin-kilic/Fall2017Swe573.git`
+* Make sure JDK and Maven binaries are installed, and “JAVA_HOME” and “M2_HOME” are defined as environment variables. You can follow [this link](https://www.mkyong.com/maven/how-to-install-maven-in-windows/) for detailed instructions.
+* Open a command line interface and navigate to project base directory. 
+* Build and install the project to your local maven repository using the folowing command. 
+
+`mvn clean install`
+* Run the project using `mvn spring-boot:run`. Default port is 8080, optionally use `mvn spring-boot:run -Drun.jvmArguments='-Dserver.port=PORT_NUMBER'` by changing PORT_NUMBER to run on a different port.
+* Open your browser and navigate to http://localhost:8080/profile to access to the application. 
+
+**Deployment Guide**
+* Create a new account on Google Cloud Platform.
+* Create a new AppEngine server and open the cloud shell utility and clone project to the remote server.
+
+`git clone https://github.com/huseyin-kilic/Fall2017Swe573.git`
+* Initialize project to run in Europe West-1 Region.
+
+`gcloud app create --region europe-west1`
+* Build and install the project to your local maven repository using the command `mvn clean install`.
+* Deploy application into AppEngine environment
+
+`mvn appengine:deploy`
+* More detailed information about deployment of a spring boot application to Google Cloud Platform can be found [here](https://codelabs.developers.google.com/codelabs/cloud-app-engine-springboot/index.html).
+
 
 **Contributors**
 
